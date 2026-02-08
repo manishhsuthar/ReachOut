@@ -3,566 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Creative Contact Form with Truck Animation</title>
+    <title>ReachOut - Contact Form</title>
     <style>
-        body {
-            background: #121212;
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 20px;
-            overflow: hidden;
-            position: relative;
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+        :root {
+            color-scheme: light;
+            --bg: #f5f7fa;
+            --card: #ffffff;
+            --border: #d9e1ea;
+            --text: #1f2a37;
+            --muted: #5f6b7a;
+            --primary: #0a65cc;
+            --primary-hover: #084c99;
+            --success: #1a7f37;
+            --error: #b42318;
         }
 
-            body::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: radial-gradient(circle at 50% 50%, rgba(128, 0, 128, 0.2), rgba(0, 0, 0, 0));
-                z-index: -1;
-            }
-
-        .form-container {
-            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
-            border-radius: 15px;
-            padding: 40px;
-            width: 100%;
-            max-width: 480px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-            .form-container::before {
-                content: '';
-                position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background: linear-gradient( to bottom right, rgba(128, 0, 128, 0.1), rgba(75, 0, 130, 0.1), rgba(0, 0, 255, 0.1) );
-                transform: rotate(45deg);
-                z-index: -1;
-                animation: shimmer 8s infinite linear;
-            }
-
-        @keyframes shimmer {
-            0% {
-                transform: translateY(-50%) rotate(0deg);
-            }
-
-            100% {
-                transform: translateY(-50%) rotate(360deg);
-            }
-        }
-
-        h2 {
-            color: #bb86fc;
-            font-size: 28px;
-            margin-bottom: 30px;
-            text-align: center;
-            text-shadow: 0 0 10px rgba(187, 134, 252, 0.5);
-        }
-
-        .input-group {
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        label {
-            position: absolute;
-            left: 15px;
-            top: 18px;
-            color: #9c9c9c;
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-
-        .helper-text {
-            display: block;
-            margin-top: 5px;
-            margin-left: 5px;
-            font-size: 12px;
-            color: #bb86fc;
-            opacity: 0.7;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid #333;
-            border-radius: 8px;
-            color: #e0e0e0;
-            font-size: 16px;
-            transition: all 0.3s ease;
+        * {
             box-sizing: border-box;
         }
 
-            input:focus, textarea:focus {
-                outline: none;
-                border-color: #bb86fc;
-                box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.3);
-            }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'IBM Plex Sans', 'Segoe UI', Tahoma, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
 
-                input:focus ~ label,
-                input:not(:placeholder-shown) ~ label,
-                textarea:focus ~ label,
-                textarea:not(:placeholder-shown) ~ label {
-                    top: -10px;
-                    left: 10px;
-                    font-size: 12px;
-                    color: #bb86fc;
-                    background: #1a1a1a;
-                    padding: 0 5px;
-                }
+        .form-container {
+            width: 100%;
+            max-width: 560px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(16, 24, 40, 0.08);
+            padding: 32px;
+        }
+
+        header {
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            margin: 0 0 8px 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        p.subtitle {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            background: #fff;
+            color: var(--text);
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(10, 101, 204, 0.15);
+        }
 
         textarea {
             min-height: 120px;
             resize: vertical;
         }
 
+        .helper-text {
+            margin-top: 6px;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .actions {
+            margin-top: 20px;
+        }
+
         button {
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(45deg, #9c27b0, #6a1b9a);
+            padding: 12px 16px;
             border: none;
             border-radius: 8px;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-        }
-
-            button::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient( 90deg, transparent, rgba(255, 255, 255, 0.2), transparent );
-                transition: 0.5s;
-            }
-
-            button:hover {
-                background: linear-gradient(45deg, #6a1b9a, #4a148c);
-                box-shadow: 0 0 15px rgba(187, 134, 252, 0.5);
-            }
-
-                button:hover::before {
-                    left: 100%;
-                }
-
-            button:disabled {
-                opacity: 0.6;
-                cursor: not-allowed;
-            }
-
-        /* Animation Container */
-        .animation-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            overflow: hidden;
-        }
-
-        /* Road */
-        .road {
-            position: absolute;
-            bottom: 20%;
-            width: 100%;
-            height: 40px;
-            background: #333;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
-        }
-
-            .road::before {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 0;
-                width: 100%;
-                height: 4px;
-                background: repeating-linear-gradient(90deg, #ffff00, #ffff00 40px, transparent 40px, transparent 80px);
-                margin-top: -2px;
-                animation: moveRoad 0.5s linear infinite;
-            }
-
-        @keyframes moveRoad {
-            0% {
-                background-position: 0 0;
-            }
-
-            100% {
-                background-position: -80px 0;
-            }
-        }
-
-        /* Truck */
-        .truck {
-            position: absolute;
-            width: 180px;
-            height: 100px;
-            bottom: calc(20% + 40px);
-            left: -200px;
-            animation: truckDrive 4s forwards;
-        }
-
-        .truck-body {
-            position: absolute;
-            width: 100px;
-            height: 50px;
-            bottom: 10px;
-            right: 0;
-            background: linear-gradient(45deg, #9c27b0, #6a1b9a);
-            border-radius: 8px 0 0 8px;
-            box-shadow: 0 0 15px rgba(156, 39, 176, 0.7);
-        }
-
-        .truck-cabin {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            bottom: 10px;
-            left: 0;
-            background: linear-gradient(45deg, #7b1fa2, #4a148c);
-            border-radius: 5px 0 0 5px;
-        }
-
-        .truck-window {
-            position: absolute;
-            width: 20px;
-            height: 15px;
-            top: 5px;
-            left: 10px;
-            background: #b388ff;
-            border-radius: 3px;
-            border: 2px solid #4a148c;
-        }
-
-        .wheel {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            bottom: 0;
-            background: #333;
-            border-radius: 50%;
-            border: 3px solid #555;
-            animation: wheelRotate 0.5s linear infinite;
-        }
-
-        .wheel-1 {
-            left: 15px;
-        }
-
-        .wheel-2 {
-            right: 20px;
-        }
-
-        .wheel-3 {
-            right: 60px;
-        }
-
-        @keyframes wheelRotate {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Message */
-        .message {
-            position: absolute;
-            padding: 15px;
-            background: #bb86fc;
-            color: #121212;
-            font-weight: bold;
-            border-radius: 10px;
-            max-width: 200px;
-            text-align: center;
-            opacity: 0;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 20px rgba(187, 134, 252, 0.8);
-            animation: messageAppear 2s 2.5s forwards;
-        }
-
-        .email-recipients {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            width: 80%;
-            opacity: 0;
-            animation: messageAppear 2s 3s forwards;
-        }
-
-        .email-badge {
-            background: rgba(187, 134, 252, 0.2);
-            border: 1px solid #bb86fc;
-            color: #e0e0e0;
-            padding: 5px 10px;
-            border-radius: 20px;
+            background: var(--primary);
+            color: #fff;
             font-size: 14px;
-            display: inline-block;
-            margin: 3px;
+            font-weight: 600;
+            cursor: pointer;
         }
 
-        @keyframes truckDrive {
-            0% {
-                left: -200px;
-            }
-
-            60% {
-                left: 50%;
-            }
-
-            80% {
-                left: 50%;
-            }
-
-            100% {
-                left: calc(100% + 200px);
-            }
+        button:hover {
+            background: var(--primary-hover);
         }
 
-        @keyframes messageAppear {
-            0% {
-                opacity: 0;
-                transform: translate(-50%, -30%);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translate(-50%, -50%);
-            }
+        button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
         }
 
-        /* Success/Error message that replaces the form */
-        .success-message, .error-message {
+        .status {
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .success-message,
+        .error-message {
             text-align: center;
             display: none;
         }
 
-            .success-message h3 {
-                color: #bb86fc;
-                font-size: 24px;
-                margin-bottom: 15px;
-            }
-
-            .error-message h3 {
-                color: #ff6b6b;
-                font-size: 24px;
-                margin-bottom: 15px;
-            }
-
-            .success-message p, .error-message p {
-                color: #9c9c9c;
-                margin-bottom: 25px;
-            }
-
-        .success-icon {
-            font-size: 60px;
-            color: #bb86fc;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
+        .success-message h2,
+        .error-message h2 {
+            margin: 0 0 8px 0;
+            font-size: 20px;
         }
 
-        .error-icon {
-            font-size: 60px;
-            color: #ff6b6b;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
+        .success-message h2 {
+            color: var(--success);
         }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-            }
-
-            100% {
-                transform: scale(1);
-            }
+        .error-message h2 {
+            color: var(--error);
         }
 
-        .new-message-btn {
-            padding: 10px 20px;
-            background: linear-gradient(45deg, #9c27b0, #6a1b9a);
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .message-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
         }
 
-            .new-message-btn:hover {
-                background: linear-gradient(45deg, #6a1b9a, #4a148c);
+        .secondary-button {
+            margin-top: 16px;
+            background: #eef2f6;
+            color: var(--text);
+        }
+
+        .secondary-button:hover {
+            background: #e2e8f0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 16px;
             }
 
-        @media (max-width: 500px) {
             .form-container {
-                padding: 30px 20px;
+                padding: 24px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="form-container">
+    <main class="form-container">
         <div id="contactForm">
-            <h2>Get In Touch</h2>
+            <header>
+                <h1>Contact Us</h1>
+                <p class="subtitle">Share your request and we will respond by email.</p>
+            </header>
             <form id="messageForm" action="/submit" method="POST">
                 <div class="input-group">
-                    <input type="text" id="name" name="name" placeholder=" " required>
-                    <label for="name">Name</label>
+                    <label for="name">Full name</label>
+                    <input type="text" id="name" name="name" autocomplete="name" required>
                 </div>
 
                 <div class="input-group">
-                    <input type="email" id="email" name="email" placeholder=" " required>
-                    <label for="email">Your Email</label>
+                    <label for="email">Work email</label>
+                    <input type="email" id="email" name="email" autocomplete="email" required>
+                    <span class="helper-text">We will only use this to reply to your message.</span>
                 </div>
 
                 <div class="input-group">
-                    <textarea id="message" name="message" placeholder=" " required></textarea>
                     <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
                 </div>
 
-                <button type="submit" id="submitBtn">Send Message</button>
+                <div class="actions">
+                    <button type="submit" id="submitBtn">Send message</button>
+                    <div class="status" id="statusText"></div>
+                </div>
             </form>
         </div>
 
         <div id="successMessage" class="success-message">
-            <div class="success-icon">✓</div>
-            <h3>Message Delivered!</h3>
-            <p>Your message has been successfully sent via email.</p>
-            <button class="new-message-btn" id="newMessageBtn">Send Another Message</button>
+            <div class="message-icon">✓</div>
+            <h2>Message sent</h2>
+            <p>Thanks for reaching out. We will respond shortly.</p>
+            <button class="secondary-button" id="newMessageBtn">Send another message</button>
         </div>
 
         <div id="errorMessage" class="error-message">
-            <div class="error-icon">✗</div>
-            <h3>Delivery Failed</h3>
-            <p id="errorText">There was an error sending your message. Please try again.</p>
-            <button class="new-message-btn" id="retryBtn">Try Again</button>
+            <div class="message-icon">!</div>
+            <h2>Message not sent</h2>
+            <p id="errorText">We could not send your message. Please try again.</p>
+            <button class="secondary-button" id="retryBtn">Try again</button>
         </div>
-    </div>
-
-    <div class="animation-container" id="animationContainer">
-        <div class="road"></div>
-        <div class="truck">
-            <div class="truck-cabin">
-                <div class="truck-window"></div>
-            </div>
-            <div class="truck-body"></div>
-            <div class="wheel wheel-1"></div>
-            <div class="wheel wheel-2"></div>
-            <div class="wheel wheel-3"></div>
-        </div>
-        <div class="message" id="deliveryMessage">Sending your message...</div>
-        <div class="email-recipients" id="emailList"></div>
-    </div>
+    </main>
 
     <script>
         document.getElementById('messageForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Disable submit button to prevent double submission
             const submitBtn = document.getElementById('submitBtn');
+            const statusText = document.getElementById('statusText');
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
+            statusText.textContent = 'Sending...';
 
-            // Show animation
-            const animationContainer = document.getElementById('animationContainer');
-            animationContainer.style.display = 'flex';
-
-            // Get form data
             const formData = new FormData(this);
-            const nameContent = formData.get('name');
-            const emailContent = formData.get('email');
-            const messageContent = formData.get('message');
 
-            // Update delivery message
-            const deliveryMessage = document.getElementById('deliveryMessage');
-            deliveryMessage.textContent = `Sending message from ${nameContent}...`;
-
-            // Display email recipient
-            const emailListDiv = document.getElementById('emailList');
-            emailListDiv.innerHTML = '';
-            const badge = document.createElement('span');
-            badge.className = 'email-badge';
-            badge.textContent = emailContent;
-            emailListDiv.appendChild(badge);
-
-            // Send data to Flask backend
             fetch('/submit', {
                 method: 'POST',
                 body: formData
             })
                 .then(response => {
-                    if (response.ok) {
-                        return response.text();
-                    } else {
+                    if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
+                    return response.text();
                 })
-                .then(data => {
-                    // Animation continues for a bit, then show success
-                    setTimeout(() => {
-                        animationContainer.style.display = 'none';
-                        document.getElementById('contactForm').style.display = 'none';
-                        document.getElementById('successMessage').style.display = 'block';
-                    }, 4000);
+                .then(() => {
+                    document.getElementById('contactForm').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                    setTimeout(() => {
-                        animationContainer.style.display = 'none';
-                        document.getElementById('contactForm').style.display = 'none';
-                        document.getElementById('errorMessage').style.display = 'block';
-                        document.getElementById('errorText').textContent = 'Failed to send email. Please check your connection and try again.';
-                    }, 4000);
+                .catch(() => {
+                    document.getElementById('contactForm').style.display = 'none';
+                    document.getElementById('errorMessage').style.display = 'block';
+                    document.getElementById('errorText').textContent = 'We could not send your message. Please check your connection and try again.';
                 })
                 .finally(() => {
-                    // Re-enable submit button
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message';
+                    submitBtn.textContent = 'Send message';
+                    statusText.textContent = '';
                 });
         });
 
-        // Reset form for new message
         document.getElementById('newMessageBtn').addEventListener('click', function () {
             resetForm();
         });
