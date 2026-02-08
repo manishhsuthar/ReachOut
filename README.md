@@ -34,13 +34,16 @@ With a stunning purple-gradient UI, smooth animations, and robust email integrat
 
 ## 📦 Installation
 
-```
+```bash
 git clone https://github.com/Sutharmanish09/ReachOut.git
 cd ReachOut
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
 pip install flask
 ```
 
-Access the form at http://127.0.0.1:5000/
+If you see a `externally-managed-environment` error on Debian/Ubuntu, make sure you are in the virtual environment as shown above.
 
 ---
 
@@ -71,11 +74,11 @@ Access the form at http://127.0.0.1:5000/
 ---
 
 ## ▶️ Running the App
-```
+```bash
 python app.py
 ```
 
-Access the form at http://127.0.0.1:5000/
+Access the form at `http://127.0.0.1:5000/`.
 
 ---
 
